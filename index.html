@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Horizontal Timeline v2</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --white: #fff;
+      --black: #323135;
+      --crystal: #a8dadd;
+      --columbia-blue: #cee9e4;
+      --midnight-green: #01565b;
+      --yellow: #e5f33d;
+      --timeline-gradient: rgba(206, 233, 228, 1) 0%,
+        rgba(206, 233, 228, 1) 50%,
+        rgba(206, 233, 228, 0) 100%;
+    }
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font: normal 16px/1.5 "Inter", sans-serif;
+      background: var(--columbia-blue);
+      color: var(--black);
+      margin-bottom: 50px;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* INTRO SECTION */
+    .section {
+      padding: 50px 0;
+    }
+
+    .section .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .section h1 {
+      font-size: 2.5rem;
+      line-height: 1.25;
+    }
+
+    /* TIMELINE */
+    .timeline {
+      position: relative;
+      white-space: nowrap;
+      max-width: 1400px;
+      padding: 0 10px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 320px auto;
+      grid-gap: 20px;
+    }
+
+    .timeline::before,
+    .timeline::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 30px;
+      width: 100px;
+      z-index: 2;
+    }
+
+    .timeline::before {
+      left: 340px;
+      background: linear-gradient(90deg, var(--timeline-gradient));
+    }
+
+    .timeline::after {
+      right: 0;
+      background: linear-gradient(270deg, var(--timeline-gradient));
+    }
+
+    .timeline .info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 20px 40px;
+      color: var(--white);
+      background: var(--midnight-green);
+      white-space: normal;
+      border-radius: 10px;
+    }
+
+    .timeline .info p {
+      margin-top: 10px;
+      color: var(--crystal);
+    }
+
+    .timeline ol {
+      font-size: 0;
+      padding: 250px 0;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      transition: all 1s;
+    }
+
+    .timeline ol li {
+      position: relative;
+      display: inline-block;
+      list-style: none;
+      width: 160px;
+      height: 5px;
+      background: var(--white);
+      scroll-snap-align: start;
+    }
+
+    .timeline ol li:not(:first-child) {
+      margin-left: 14px;
+    }
+
+    .timeline ol li:last-child {
+      width: 340px;
+    }
+
+    .timeline ol li:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: calc(100% + 1px);
+      width: 16px;
+      height: 16px;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      background: var(--midnight-green);
+    }
+
+    .timeline ol li div {
+      position: absolute;
+      left: calc(100% + 7px);
+      width: 280px;
+      padding: 15px;
+      font-size: 1rem;
+      background: var(--white);
+      border-radius: 0 10px 10px 10px;
+      white-space: normal;
+    }
+
+    .timeline ol li:nth-child(odd) div {
+      top: -16px;
+      transform: translateY(-100%);
+      border-radius: 10px 10px 10px 0;
+    }
+
+    .timeline ol li:nth-child(even) div {
+      top: calc(100% + 16px);
+    }
+
+    .timeline time {
+      display: block;
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: var(--midnight-green);
+    }
+
+    /* FOOTER */
+    .page-footer {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      padding: 5px;
+      background: var(--columbia-blue);
+    }
+
+    /* MOBILE */
+    @media (max-width: 800px) {
+      .timeline {
+        display: block;
+      }
+      .timeline .info {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<section class="section intro">
+  <div class="container">
+    <h1>Horizontal Timeline v2 →</h1>
+    <p>Timeline v1 <a href="https://codepen.io/tutsplus/full/ZKpNwm" target="_blank">here</a></p>
+  </div>
+</section>
+
+<section class="timeline">
+  <div class="info">
+    <img width="50" height="50" src="https://assets.codepen.io/210284/face.svg" alt="" />
+    <h2>Company History</h2>
+    <p>At vero eos et accusamus et iusto odio dignissimos ducimus</p>
+    <p><a href="#">Learn more ></a></p>
+  </div>
+
+  <ol>
+    <li><div><time>1934</time>At vero eos et accusamus et iusto odio dignissimos.</div></li>
+    <li><div><time>1937</time>Proin quam velit, efficitur vel neque vitae.</div></li>
+    <li><div><time>1940</time>Proin iaculis, nibh eget efficitur varius.</div></li>
+    <li><div><time>1943</time>In mattis elit vitae odio posuere.</div></li>
+    <li><div><time>1946</time>In mattis elit vitae odio posuere.</div></li>
+    <li><div><time>1956</time>In mattis elit vitae odio posuere.</div></li>
+    <li><div><time>1957</time>In mattis elit vitae odio posuere.</div></li>
+    <li><div><time>1967</time>Aenean condimentum odio a bibendum.</div></li>
+    <li><div><time>1977</time>Vestibulum porttitor lorem sed pharetra.</div></li>
+    <li><div><time>1985</time>In mattis elit vitae odio posuere.</div></li>
+    <li><div><time>2000</time>In mattis elit vitae odio posuere.</div></li>
+    <li><div><time>2005</time>In mattis elit vitae odio posuere.</div></li>
+    <li></li>
+  </ol>
+</section>
+
+<footer class="page-footer">
+  <span>made by </span>
+  <a href="https://georgemartsoukos.com/" target="_blank">
+    <img width="24" height="24" src="https://assets.codepen.io/162656/george-martsoukos-small-logo.svg" alt="">
+  </a>
+</footer>
+
+<script>
+  const elH = document.querySelectorAll(".timeline li > div");
+
+  window.addEventListener("load", () => {
+    let maxHeight = 0;
+
+    elH.forEach(el => {
+      maxHeight = Math.max(maxHeight, el.offsetHeight);
+    });
+
+    elH.forEach(el => {
+      el.style.height = maxHeight + "px";
+    });
+  });
+</script>
+
+</body>
+</html>
